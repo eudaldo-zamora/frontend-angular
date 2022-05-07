@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,6 +12,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   @ViewChild('drawer') drawer!: MatDrawer;
 
   options: string[] = ['Usuarios'];
+  image='';
 
   constructor() { }
 
@@ -23,6 +25,17 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
   toogleSidebar() {
     this.drawer.toggle();
+  }
+
+  async capturarFoto() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      source: CameraSource.Prompt,
+      resultType: CameraResultType.Base64
+    });
+
+    this.image = `data:image/jpeg;base64,${image.base64String}`;
   }
 
 }

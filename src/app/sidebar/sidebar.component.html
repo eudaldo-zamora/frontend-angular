@@ -4,9 +4,13 @@
             <button [routerLink]="'/users/list'" *ngFor="let option of options" mat-list-item > 
                 {{option}} 
             </button>
+            <button (click)="capturarFoto()" > 
+              Cámara 
+          </button>
           </mat-action-list>          
     </mat-drawer>
     <mat-drawer-content>
+      <img *ngIf="image !== ''" src="{{image}}" alt="Descripcion">
       <router-outlet></router-outlet>
     </mat-drawer-content>
   </mat-drawer-container>

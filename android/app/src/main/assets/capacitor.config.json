@@ -1,0 +1,6 @@
+{
+	"appId": "ec.edu.utm.frontend",
+	"appName": "frontend",
+	"webDir": "dist/frontend",
+	"bundledWebRuntime": false
+}
